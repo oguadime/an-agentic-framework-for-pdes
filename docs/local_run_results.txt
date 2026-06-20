@@ -1,0 +1,136 @@
+# Local Run Results
+
+## python demo.py
+
+Exit code: 0
+
+STDOUT:
+========================================================================================
+DEMO 1: Run a heat equation experiment with alpha=1, nx=101, dt=1e-5, T=0.01.
+========================================================================================
+Planner rationale: Selected the heat solver and safe default parameters when values were not supplied.\nEvaluation: Evaluation passed.\n\nPDE experiment completed.
+
+PDE: heat
+Method: explicit Euler in time, centered finite differences in space
+
+Parameters:
+  - alpha: 1.0
+  - nx: 101
+  - dx: 0.01
+  - dt: 1e-05
+  - T: 0.01
+  - nt: 1000
+  - cfl_like_ratio: 0.1
+
+Stability:
+  - stable: True
+  - condition: dt <= dx^2/(2 alpha) = 5.000e-05
+
+Relative L2 error: 3.247189e-06
+
+Artifacts:
+  - plot: /mnt/data/numerical-pde-agent/outputs/heat_solution.png
+  - csv: /mnt/data/numerical-pde-agent/outputs/heat_solution.csv
+  - report: /mnt/data/numerical-pde-agent/outputs/heat_report.md
+
+Interpretation:
+The numerical solution is compared against the exact decaying sine mode. Because the time step satisfies the explicit heat-equation stability condition, the method remains stable and the relative L2 error is small for the chosen grid.
+
+========================================================================================
+DEMO 2: Run a wave equation experiment with c=1, nx=201, dt=0.0025, T=0.25.
+========================================================================================
+Planner rationale: Selected the wave solver and safe default parameters when values were not supplied.\nEvaluation: Evaluation passed.\n\nPDE experiment completed.
+
+PDE: wave
+Method: second-order centered finite differences in time and space
+
+Parameters:
+  - c: 1.0
+  - nx: 201
+  - dx: 0.005
+  - dt: 0.0025
+  - T: 0.25
+  - nt: 100
+  - cfl: 0.5
+
+Stability:
+  - stable: True
+  - condition: c*dt/dx <= 1
+
+Relative L2 error: 6.055918e-06
+
+Artifacts:
+  - plot: /mnt/data/numerical-pde-agent/outputs/wave_solution.png
+  - csv: /mnt/data/numerical-pde-agent/outputs/wave_solution.csv
+  - report: /mnt/data/numerical-pde-agent/outputs/wave_report.md
+
+Interpretation:
+The wave solution is compared against the exact standing-wave solution. The CFL condition is satisfied, so the finite-difference wave solver remains stable.
+
+========================================================================================
+DEMO 3: Run an advection experiment with c=1, nx=200, dt=0.002, T=0.2.
+========================================================================================
+Planner rationale: Selected the advection solver and safe default parameters when values were not supplied.\nEvaluation: Evaluation passed.\n\nPDE experiment completed.
+
+PDE: advection
+Method: first-order upwind finite difference method with periodic boundary conditions
+
+Parameters:
+  - c: 1.0
+  - nx: 200
+  - dx: 0.005
+  - dt: 0.002
+  - T: 0.2
+  - nt: 100
+  - cfl: 0.4
+
+Stability:
+  - stable: True
+  - condition: |c|*dt/dx <= 1
+
+Relative L2 error: 1.177412e-02
+
+Artifacts:
+  - plot: /mnt/data/numerical-pde-agent/outputs/advection_solution.png
+  - csv: /mnt/data/numerical-pde-agent/outputs/advection_solution.csv
+  - report: /mnt/data/numerical-pde-agent/outputs/advection_report.md
+
+Interpretation:
+The upwind method transports the sine wave around the periodic domain. The method is stable under the CFL condition, but it is first order and therefore introduces numerical diffusion.
+
+
+
+STDERR:
+Spreadsheet runtime warmup failed during python startup
+Traceback (most recent call last):
+  File "/tmp/tmp.yTcnQsZYiA/artifact_tool_v2-2.8.4/artifact_tool/patches/warm_spreadsheet_runtime_on_startup.py", line 26, in warm_spreadsheet_runtime_on_startup
+  File "/tmp/tmp.yTcnQsZYiA/artifact_tool_v2-2.8.4/artifact_tool/spreadsheet_warmup.py", line 785, in warm_spreadsheet_runtime
+  File "/tmp/tmp.yTcnQsZYiA/artifact_tool_v2-2.8.4/artifact_tool/spreadsheet_warmup.py", line 720, in _warm_feature_flows
+  File "/tmp/tmp.yTcnQsZYiA/artifact_tool_v2-2.8.4/artifact_tool/spreadsheet_warmup.py", line 704, in _warm_collaboration_flows
+  File "/tmp/tmp.yTcnQsZYiA/artifact_tool_v2-2.8.4/artifact_tool/generated/interface/models.py", line 30820, in hydrate_crdt_from_proto
+  File "/tmp/tmp.yTcnQsZYiA/artifact_tool_v2-2.8.4/artifact_tool/rpc/remote.py", line 749, in __call__
+  File "/tmp/tmp.yTcnQsZYiA/artifact_tool_v2-2.8.4/artifact_tool/rpc/client.py", line 150, in call
+artifact_tool.rpc.client.RemoteError: hydrateCrdtFromProto requires an empty collaborative document.
+
+
+## pytest -q
+
+Exit code: 0
+
+STDOUT:
+[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m                                                                    [100%][0m
+[32m[32m[1m5 passed[0m[32m in 5.97s[0m[0m
+
+
+STDERR:
+Spreadsheet runtime warmup failed during python startup
+Traceback (most recent call last):
+  File "/tmp/tmp.yTcnQsZYiA/artifact_tool_v2-2.8.4/artifact_tool/patches/warm_spreadsheet_runtime_on_startup.py", line 26, in warm_spreadsheet_runtime_on_startup
+  File "/tmp/tmp.yTcnQsZYiA/artifact_tool_v2-2.8.4/artifact_tool/spreadsheet_warmup.py", line 785, in warm_spreadsheet_runtime
+  File "/tmp/tmp.yTcnQsZYiA/artifact_tool_v2-2.8.4/artifact_tool/spreadsheet_warmup.py", line 720, in _warm_feature_flows
+  File "/tmp/tmp.yTcnQsZYiA/artifact_tool_v2-2.8.4/artifact_tool/spreadsheet_warmup.py", line 704, in _warm_collaboration_flows
+  File "/tmp/tmp.yTcnQsZYiA/artifact_tool_v2-2.8.4/artifact_tool/generated/interface/models.py", line 30820, in hydrate_crdt_from_proto
+  File "/tmp/tmp.yTcnQsZYiA/artifact_tool_v2-2.8.4/artifact_tool/rpc/remote.py", line 749, in __call__
+  File "/tmp/tmp.yTcnQsZYiA/artifact_tool_v2-2.8.4/artifact_tool/rpc/client.py", line 150, in call
+artifact_tool.rpc.client.RemoteError: hydrateCrdtFromProto requires an empty collaborative document.
+
