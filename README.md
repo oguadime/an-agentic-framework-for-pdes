@@ -1,6 +1,6 @@
 # Numerical PDE Experiment Agent
 
-A capstone project for Kaggle's **AI Agents: Intensive Vibe Coding Capstone Project**.
+A capstone project for Kaggle's **AI Agents: Intensive Vibe Coding Capstone Project (2026)**.
 
 This project builds a small but production-minded AI agent system for running verified numerical PDE experiments. It is designed for the **Freestyle** track, with a real-world scientific-computing use case.
 
@@ -14,7 +14,7 @@ Current supported PDEs:
 - 1D wave equation with zero Dirichlet boundary conditions
 - 1D linear advection equation with periodic boundary conditions
 
-The MVP is deliberately scoped to PDEs with known exact solutions, so the system can evaluate numerical error instead of only producing plausible-looking plots.
+The MVP is deliberately scoped to PDEs with known exact solutions, so the system can evaluate numerical error.
 
 ## Course concepts demonstrated
 
