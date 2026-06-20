@@ -145,9 +145,8 @@ numerical-pde-agent/
 ├── evals/
 │   └── test_pde_solvers.py
 ├── docs/
-│   ├── kaggle_writeup_draft.md
-│   ├── video_script.md
-│   └── demo_checklist.md
+│   ├── AgenticPDE.png
+│   └── local_run_results.txt
 ├── outputs/
 │   └── .gitkeep
 └── demo.py
